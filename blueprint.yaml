@@ -1,0 +1,17 @@
+name: ABX - Rename a VM Demo
+version: 1
+formatVersion: 1
+inputs:
+  vmname:
+    type: string
+resources:
+  Cloud_Machine_1:
+    type: Cloud.Machine
+    properties:
+      newName: '${input.vmname}'
+      image: ubuntu
+      flavor: small
+      cloudConfig: |
+        hostname: ${input.vmname}
+      constraints:
+        - tag: 'env:aws'
